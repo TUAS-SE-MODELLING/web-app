@@ -11,6 +11,7 @@ yarn-error.log*
 *.dll
 *.so
 *.dylib
+*.vs
 
 # ignore txt files
 *.txt
