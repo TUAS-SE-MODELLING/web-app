@@ -26,9 +26,13 @@ body {
   background-color: #ffffffa4;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+Header {
+  text-align: center;
+  font-size: 120%;
+}
+
+.info {
+  font-size: 70%;
+  margin: 0% 10% 0% 15%;
+  text-align: center;
 }
