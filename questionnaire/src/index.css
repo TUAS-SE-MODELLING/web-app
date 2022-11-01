@@ -14,6 +14,7 @@ body {
   background-color: #a1d2ffa4;
 }
 
+/*The content in page style*/
 .container {
   max-width: 66vh;
   margin: 10% auto;
@@ -26,16 +27,20 @@ body {
   background-color: #ffffffa4;
 }
 
+/*Question h1 and h2 follow this style*/
 Header {
   text-align: center;
   font-size: 120%;
   margin-bottom: 10%;
 }
 
+/*Here we wan't to make h1 has different font
+because the other had weird 'Q' letter*/
 header h1 {
   font-family: 'Noto Serif KR', serif;
 }
 
+/*style for information text*/
 .info {
   display: grid;
   grid-template-columns:20% 100%;
@@ -54,6 +59,7 @@ header h1 {
   font-family: 'Acme', sans-serif;
 }
 
+/*Option buttons follow these styles*/
 button {
   background-color: #ffceff;
   border: 1px solid #ffceff;

@@ -1,3 +1,5 @@
+// This whole thing propably needs another solution but now i just did some kind of yeah.. :D 
+
 const options = [
     {
         id:1,
@@ -14,6 +16,8 @@ const options = [
 ];
 
 const Options = () => {
+
+    // so this just returns buttons with those texts^^
     return (
         <>
             {options.map((option) => (

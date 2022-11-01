@@ -1,5 +1,6 @@
 const Button = () => {
     // This component isn't been used yet
+    // and maybe never will :D 
 
     const onClick = () => {
         console.log('click')

@@ -1,8 +1,8 @@
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
-            <h1>Question {1}</h1>
-            <h2>Are you feeling exhausted?</h2>
+            <h1>Question {props.number}</h1>
+            <h2>{props.text}</h2>
         </header>
     );
 };
