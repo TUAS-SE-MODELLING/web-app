@@ -1,5 +1,5 @@
 const Button = () => {
-    
+    // This component isn't been used yet
 
     const onClick = () => {
         console.log('click')
