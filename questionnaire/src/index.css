@@ -3,7 +3,6 @@
 
 body {
   font-family: 'Cormorant Garamond', serif;
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +29,7 @@ body {
 Header {
   text-align: center;
   font-size: 120%;
+  margin-bottom: 10%;
 }
 
 header h1 {
@@ -43,15 +43,35 @@ header h1 {
 
 .info h3 {
   font-size: 100%;
-  margin: 2% 10% 0% 0%;
+  margin: 3% 10% 0% 0%;
   width: 69%;
 }
 
 .info h2 {
   margin: 0% 10% 0% 45%;
-  font-size: 300%;
+  font-size: 340%;
   color: red;
   font-family: 'Acme', sans-serif;
+}
+
+button {
+  background-color: #ffceff;
+  border: 1px solid #ffceff;
+  border-radius: 50%;
+  margin: 3% 3% 0% 25%;
+  color: #000000;
+  height:40px;
+  width: 50%;
+  display: block;
+  cursor: pointer;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 130%;
+}
+
+button:hover {
+  background-color: #96a7f3;
+  color: white;
+  border: 1px solid #96a7f3;
 }
 
 
