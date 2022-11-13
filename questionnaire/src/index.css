@@ -1,5 +1,8 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Cormorant+Garamond:wght@300&family=Noto+Serif+KR:wght@200&display=swap');
+
+.App {
+  text-align: center;
+}
 
 body {
   font-family: 'Cormorant Garamond', serif;
@@ -14,30 +17,15 @@ body {
   background-color: #a1d2ffa4;
 }
 
-/*The content in page style*/
-.container {
-  max-width: 66vh;
-  margin: 10% auto;
-  overflow: auto;
-  min-height: 500px;
-  min-width: 600px;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 5%;
-  border-radius: 100px;
-  background-color: #ffffffa4;
-}
-
-/*Question h1 and h2 follow this style*/
-Header {
+h2 {
   text-align: center;
   font-size: 120%;
   margin-bottom: 10%;
 }
-
-/*Here we wan't to make h1 has different font
-because the other had weird 'Q' letter*/
-header h1 {
+h1 {
   font-family: 'Noto Serif KR', serif;
+  font-size: 150%;
+  padding-bottom: 50px;
 }
 
 /*style for information text*/
@@ -60,10 +48,10 @@ header h1 {
 }
 
 /*Option buttons follow these styles*/
-button {
+li {
   background-color: #ffceff;
   border: 1px solid #ffceff;
-  border-radius: 50%;
+  border-radius: 50px;
   margin: 3% 3% 0% 25%;
   color: #000000;
   height:40px;
@@ -72,12 +60,95 @@ button {
   cursor: pointer;
   font-family: 'Noto Serif KR', serif;
   font-size: 130%;
+  text-align: center;
+  justify-content: center;
 }
 
-button:hover {
+li:hover {
   background-color: #96a7f3;
   color: white;
   border: 1px solid #96a7f3;
 }
 
+.question-card {
+  max-width: 66vh;
+  margin: 5% auto;
+  overflow: auto;
+  min-height: 500px;
+  min-width: 600px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 16px;
+  border-radius: 100px;
+  background-color: #ffffffa4;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 10px 36px -18px;
+}
 
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.thanks {
+  text-align: center;
+  max-width: 66vh;
+  margin: 5% auto;
+  overflow: auto;
+  min-height: 100px;
+  min-width: 200px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 0px;
+  border-radius: 100px;
+  background-color: #ffffffa4;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 10px 36px -18px;
+}
+
+.thanks h1 {
+  padding: 0;
+}
+
+/* back to beginning button */
+.btn {
+  background-color: #e1ecf4;
+  border-radius: 50px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.btn:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
