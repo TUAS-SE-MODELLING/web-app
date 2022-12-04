@@ -153,3 +153,19 @@ ul {
   color: #2c5777;
 }
 
+input {
+  background-color: #c7e8ff;
+  margin-top: 5%;
+  width: 200px;
+  margin-left: 31%;
+  height: 50px;
+  border: none;
+}
+
+label {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  flex-direction: column;
+}
+

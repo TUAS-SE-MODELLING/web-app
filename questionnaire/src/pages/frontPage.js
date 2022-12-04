@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../index.css';
 import Info from '../components/Info';
-import currentQuestionnare from '../json/questionnare.json';
+import currentQuestionnare from '../json/currentQuestionnare.json';
 
 
 
-const NewQuestionnare = () => {
+const FrontPage = () => {
 
   //Properties 
 
@@ -45,10 +45,11 @@ const NewQuestionnare = () => {
 
       { showThankYouMessage ? ( 
         /* Thank you at the end */
-        <div className='thanks'>
-        <h1>Thank you!</h1>
-        <button className='btn' onClick={() => restart()}>Back to beginning</button>
+        <div className='question-card'>
+            <h1>Thank you!</h1>
+            <button className='btn' onClick={() => restart()}>Back to beginning</button>
         </div>
+
       ) : (
         
         <div className='question-card'>
@@ -76,4 +77,4 @@ const NewQuestionnare = () => {
   );
 }
 
-export default NewQuestionnare;
+export default FrontPage;
