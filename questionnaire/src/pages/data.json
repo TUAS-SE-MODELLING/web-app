@@ -1,0 +1,35 @@
+{
+    "1": {
+          "text": "Are you feeling exhausted?",
+          "options": [
+            { "id": 0, "text": "Yes"},
+            { "id": 1, "text": "No"},
+            { "id": 2, "text": "I am not sure"}
+          ]
+        },
+    "2": {
+            "text": "How often do you feel stressed?",
+            "options": [
+              { "id": 0, "text": "Daily"},
+              { "id": 1, "text": "A few times in a week"},
+              { "id": 2, "text": "Sometimes"}
+            ]
+          },
+    "3": {
+            "text": "How many hours do you sleep each night?",
+            "options": [
+              { "id": 0, "text": "5 hours or less"},
+              { "id": 1, "text": "Around 5-8 hours"},
+              { "id": 2, "text": "8 hours or more"}
+            ]
+          },
+    "4": {
+            "text": "Do you feel happy with your work performance?",
+            "options": [
+              { "id": 0, "text": "Yes"},
+              { "id": 1, "text": "No"},
+              { "id": 2, "text": "I don't know"}
+            ]
+          }
+    }
+    

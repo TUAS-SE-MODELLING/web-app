@@ -1,8 +1,8 @@
-const Info = () => {
+const Info = props => {
     return (
         <div className="info">
             <h2>!</h2>
-            <h3>Dear member of our staff, this survey is completely anonymous. We ask for answers only to measure the well-being of our staff.</h3>
+            <h3>{props.text}</h3>
         </div>
     );
 };
