@@ -15,7 +15,7 @@ const NewQuestionnare = () => {
     const [option3, setOption3] = useState('');
     const [text, setText] = useState('');
 
-    const [questionnare, setQuestionnare] = ([]);
+   
     const [questions, setQuestions] = useState([
         {
             text: "",
@@ -49,8 +49,12 @@ const NewQuestionnare = () => {
         console.log("new")
         for (const i in questions) {
             // TÄÄ ON VIELÄ super keskeennndjs 
-            
-            console.log(i + "__:__"+questions[i].text + "_______" + questions[i].options[i].text)
+            /*fs.writeFile('./myFile.json', JSON.stringify(updatedJSON), (err) => {
+                if (err) console.log('Error writing file:', err);
+            })*/
+            // browserify-fs could be solution
+        
+            console.log(i + "__:__"+questions[i].text + "_______" + questions[i].options[0].text + " tai " + questions[i].options[1].text + " tai " + questions[i].options[2].text)
             for (const x in questions[i]) {
                 //console.log(x + "__" + questions[i][x])
                 for (const y in questions[i][x]) {

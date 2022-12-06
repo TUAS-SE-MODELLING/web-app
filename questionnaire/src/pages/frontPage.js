@@ -1,26 +1,46 @@
-import React, { useState } from 'react';
+import React from "react";
+import Info from "../components/Info";
+
+import { useState, useEffect } from 'react';
 import '../index.css';
-import Info from '../components/Info';
-import currentQuestionnare from '../json/currentQuestionnare.json';
+
 
 
 
 const FrontPage = () => {
+
+    const [length, setLength] = useState(0)
+    const [quizdata , setQuizdata] =useState([])
+    const [isLoading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        fetch('http://localhost:3001/api')
+        .then((response) => response.json())
+        .then((json) => {
+            setQuizdata(json)
+            for (const i in json){
+                setLength(i)
+            }
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+
+    }, []);
+
 
   //Properties 
 
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  // How many questions are in json
-  const dataLength = Object.keys(currentQuestionnare).length
 
   //Helper functions
 
   //possible answer was clicked
 
   const optionClicked = () => {
-    if (currentQuestion + 1 < dataLength) {
+    
+    if (currentQuestion + 1 < length) {
       setCurrentQuestion(currentQuestion + 1);
     } 
     else {
@@ -41,8 +61,9 @@ const FrontPage = () => {
      
 
       <Info text="Dear member of our staff, this survey is completely anonymous. We ask for answers only to measure the well-being of our staff." />
-    
+      {isLoading ? ( <p>Loading...</p> ) : (
 
+      <div>
       { showThankYouMessage ? ( 
         /* Thank you at the end */
         <div className='question-card'>
@@ -55,10 +76,10 @@ const FrontPage = () => {
         <div className='question-card'>
 
         <h2>Question: {currentQuestion + 1}</h2>
-        <h1 className='question-text'>{currentQuestionnare[currentQuestion + 1].text}</h1>
+        <h1 className='question-text'>{quizdata[currentQuestion + 1].text}</h1>
 
         <ul>
-         {currentQuestionnare[currentQuestion + 1].options.map((option) => {
+         {quizdata[currentQuestion + 1].options.map((option) => {
           return (
             <li 
             key={option.id}
@@ -73,6 +94,8 @@ const FrontPage = () => {
         </div>
 
       )}
+      </div>
+    )}
     </div>
   );
 }
