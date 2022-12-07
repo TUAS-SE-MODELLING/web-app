@@ -4,6 +4,7 @@ import Info from '../components/Info';
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
+import { useNavigate } from 'react-router-dom';
 
 
 const NewQuestionnare = () => {
@@ -13,6 +14,8 @@ const NewQuestionnare = () => {
     const [text, setText] = useState('');
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
+    const navigate = useNavigate();
 
     // Hating this. I don't know which would be best
     // solution to do this without using database:)
@@ -58,6 +61,9 @@ const NewQuestionnare = () => {
     // it will send it to server which writes new.json
     // of that data
     const SendQuestionnare = () => {
+
+        
+
         // first one away wich is empty
         questions.shift()
         console.log(questions)
@@ -82,6 +88,7 @@ const NewQuestionnare = () => {
                 end: endDate
             }
         ])
+        
     }
 
   return (
@@ -148,7 +155,8 @@ const NewQuestionnare = () => {
             
                 <button type='submit'>Next question</button>
             </form>
-            <button onClick={SendQuestionnare}>Save and send questionnare</button>
+            <button onClick={SendQuestionnare}
+           >Save and send questionnare</button>
         </div>
     </div>
   );

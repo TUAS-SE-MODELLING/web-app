@@ -23,7 +23,7 @@ const FrontPage = () => {
     // then when everything has completed we will set
     // loading to false which will allow us to see quiz
     useEffect(() => {
-        fetch('http://localhost:3001/api')
+        fetch('http://localhost:3001/currentQuiz')
         .then((response) => response.json())
         .then((json) => {
             setQuizdata(json)

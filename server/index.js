@@ -10,9 +10,8 @@ const questionnareData = require('./json/currentQuestionnare.json')
 const newQuiz = require('./json/new.json')
 
 var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-app.get("/api", (req, res) => {
+app.get("/currentQuiz", (req, res) => {
     res.header("Content-Type",'application/json');
     res.send(JSON.stringify(questionnareData));
 });
