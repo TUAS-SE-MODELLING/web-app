@@ -5,6 +5,7 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const NewQuestionnare = () => {
@@ -15,6 +16,13 @@ const NewQuestionnare = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+
+    let navigate = useNavigate();
+
+    const toReadyQuiz = () =>{ 
+        let path = `../readyQuiz`; 
+        navigate(path);
+      }
 
     // Hating this. I don't know which would be best
     // solution to do this without using database:)
@@ -88,6 +96,7 @@ const NewQuestionnare = () => {
                 end: endDate
             }
         ])
+        toReadyQuiz();
         
     }
 
@@ -100,7 +109,7 @@ const NewQuestionnare = () => {
                  <h2>Results</h2>
             <form onSubmit={event => {
                 event.preventDefault();
-                SaveQuestion(text, option1, option2, option3,startDate,endDate)
+                SaveQuestion(text, option1, option2, option3)
             }}>
             <div className="dates">
                 <label> Start date:

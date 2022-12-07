@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Info from "../components/Info";
 import { Link } from "react-router-dom";
-
 import '../index.css';
 
 
 
 const ReadyQuizPage = () => {
+
+    const [quizData, setQuizData] = useState()
+
     fetch('http://localhost:3001/new')
     .then((response) => response.json())
     .then(data => {
-        console.log(data.text)
-        for (const i in data) {
-            console.log(i + "------" + data[i].options[i].text)
-        }
+        //console.log(data.start)
+        setQuizData(JSON.stringify(data))
+        //console.log(data.questions[0].text)
+        //console.log(data.questions[1].options[0].text)
+        
     });
 
     return(
@@ -22,7 +25,10 @@ const ReadyQuizPage = () => {
             <div className='question-card'>
                 
                  <Link to="/moderatorPage"> Back</Link>
-                 <h2>Results</h2>
+                 <h2>Questionnaire saved</h2>
+                 <p> Here it is: :D</p>
+                 <p>{quizData}</p>
+                 
                 
 
             </div>

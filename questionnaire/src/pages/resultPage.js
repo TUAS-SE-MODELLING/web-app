@@ -7,14 +7,7 @@ import '../index.css';
 
 
 const ResultPage = () => {
-    fetch('http://localhost:3001/new')
-    .then((response) => response.json())
-    .then(data => {
-        console.log(data.text)
-        for (const i in data) {
-            console.log(i + "------" + data[i].options[i].text)
-        }
-    });
+
 
     return(
         <div className = "App">
