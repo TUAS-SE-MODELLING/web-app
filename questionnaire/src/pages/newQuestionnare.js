@@ -1,13 +1,9 @@
 import React from 'react';
 import '../index.css';
 import Info from '../components/Info';
-import styled from 'styled-components';
 import { useState } from 'react';
 
 
-const Form = styled.form`
-    background-color: red;
-`;
 
 const NewQuestionnare = () => {
     const [option1, setOption1] = useState('');
@@ -47,21 +43,31 @@ const NewQuestionnare = () => {
 
     const PrintQuestionnare = () => {
         console.log("new")
-        for (const i in questions) {
+        // first one away wich is empty
+        questions.shift()
+        console.log(questions)
+        fetch('http://localhost:3001/new', {
+            method: "POST",
+            headers: {
+                'Content-type': "application/json"
+            },
+            body: JSON.stringify(questions)
+        });
+        /*for (const i in questions) {
             // TÄÄ ON VIELÄ super keskeennndjs 
             /*fs.writeFile('./myFile.json', JSON.stringify(updatedJSON), (err) => {
                 if (err) console.log('Error writing file:', err);
             })*/
             // browserify-fs could be solution
-        
-            console.log(i + "__:__"+questions[i].text + "_______" + questions[i].options[0].text + " tai " + questions[i].options[1].text + " tai " + questions[i].options[2].text)
+            
+            /*console.log(i + "__:__"+questions[i].text + "_______" + questions[i].options[0].text + " tai " + questions[i].options[1].text + " tai " + questions[i].options[2].text)
             for (const x in questions[i]) {
                 //console.log(x + "__" + questions[i][x])
                 for (const y in questions[i][x]) {
                     //console.log(y  +"...." + questions[i][x][y])
                 }
             }
-        }
+        }*/
         setQuestions([
             {
                 text: "",

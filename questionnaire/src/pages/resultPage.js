@@ -7,12 +7,12 @@ import '../index.css';
 
 
 const ResultPage = () => {
-    fetch('http://localhost:3001/api')
+    fetch('http://localhost:3001/new')
     .then((response) => response.json())
     .then(data => {
-        console.log(data[1].text)
+        console.log(data.text)
         for (const i in data) {
-            console.log(i + "------" + data[i].options[1].text)
+            console.log(i + "------" + data[i].options[i].text)
         }
     });
 

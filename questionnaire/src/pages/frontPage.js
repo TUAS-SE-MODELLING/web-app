@@ -12,15 +12,14 @@ const FrontPage = () => {
     const [length, setLength] = useState(0)
     const [quizdata , setQuizdata] =useState([])
     const [isLoading, setLoading] = useState(true);
+    const [num, setNum] = useState(1);
     
     useEffect(() => {
         fetch('http://localhost:3001/api')
         .then((response) => response.json())
         .then((json) => {
             setQuizdata(json)
-            for (const i in json){
-                setLength(i)
-            }
+            setLength(Object.keys(quizdata).length)
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
@@ -39,7 +38,7 @@ const FrontPage = () => {
   //possible answer was clicked
 
   const optionClicked = () => {
-    
+    setNum(num + 1)
     if (currentQuestion + 1 < length) {
       setCurrentQuestion(currentQuestion + 1);
     } 
@@ -52,7 +51,9 @@ const FrontPage = () => {
   const restart = () => {
     setCurrentQuestion(0);
     setShowThankYouMessage(false);
+    setNum(1)
   };
+
 
 //Show next question & options when button is clicked
 //After last question is answered, show thank you message
@@ -75,11 +76,11 @@ const FrontPage = () => {
         
         <div className='question-card'>
 
-        <h2>Question: {currentQuestion + 1}</h2>
-        <h1 className='question-text'>{quizdata[currentQuestion + 1].text}</h1>
+        <h2>Question: {num} </h2>
+        <h1 className='question-text'>{quizdata[currentQuestion].text}</h1>
 
         <ul>
-         {quizdata[currentQuestion + 1].options.map((option) => {
+         {quizdata[currentQuestion].options.map((option) => {
           return (
             <li 
             key={option.id}
