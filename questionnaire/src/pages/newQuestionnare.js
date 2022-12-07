@@ -47,9 +47,7 @@ const NewQuestionnare = () => {
               { id: 0, text: option1},
               { id: 1, text: option2},
               { id: 2, text: option3}
-            ],
-            start: startDate,
-            end: endDate
+            ]
         }
     ];
     setQuestions(updateQuestions);    
@@ -71,7 +69,10 @@ const NewQuestionnare = () => {
             headers: {
                 'Content-type': "application/json"
             },
-            body: JSON.stringify(questions)
+            body: JSON.stringify({
+                start: startDate,
+                end: endDate,
+                questions})
         });
         
         // after that it sets everything to default/null
