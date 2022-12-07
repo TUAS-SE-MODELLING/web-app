@@ -9,11 +9,19 @@ import '../index.css';
 
 const FrontPage = () => {
 
+    // this is for how long quiz will run
     const [length, setLength] = useState(0)
+
     const [quizdata , setQuizdata] =useState([])
     const [isLoading, setLoading] = useState(true);
+
+    // this is only to change questions number
     const [num, setNum] = useState(1);
     
+    // here we will fetch quix data from server
+    // set it to data state and take length of it
+    // then when everything has completed we will set
+    // loading to false which will allow us to see quiz
     useEffect(() => {
         fetch('http://localhost:3001/api')
         .then((response) => response.json())
@@ -62,9 +70,13 @@ const FrontPage = () => {
      
 
       <Info text="Dear member of our staff, this survey is completely anonymous. We ask for answers only to measure the well-being of our staff." />
+
+      {/*While fetchin data*/}
       {isLoading ? ( <p>Loading...</p> ) : (
 
+        
       <div>
+      {/*checks if quiz has completed*/}
       { showThankYouMessage ? ( 
         /* Thank you at the end */
         <div className='question-card'>
@@ -75,7 +87,7 @@ const FrontPage = () => {
       ) : (
         
         <div className='question-card'>
-
+        {/*displays questions one by one*/}
         <h2>Question: {num} </h2>
         <h1 className='question-text'>{quizdata[currentQuestion].text}</h1>
 

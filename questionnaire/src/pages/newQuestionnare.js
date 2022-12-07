@@ -2,7 +2,8 @@ import React from 'react';
 import '../index.css';
 import Info from '../components/Info';
 import { useState } from 'react';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
 
 const NewQuestionnare = () => {
@@ -10,7 +11,14 @@ const NewQuestionnare = () => {
     const [option2, setOption2] = useState('');
     const [option3, setOption3] = useState('');
     const [text, setText] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
+    // Hating this. I don't know which would be best
+    // solution to do this without using database:)
+    // something maybe to do with dates so that when 
+    // start date is today it will change new.json data to
+    // currentQuestionaire.json data
    
     const [questions, setQuestions] = useState([
         {
@@ -19,10 +27,14 @@ const NewQuestionnare = () => {
               { id: 0, text: ""},
               { id: 1, text: ""},
               { id: 2, text: ""}
-            ]
+            ],
+            start: startDate,
+            end: endDate
         }
     ]);
     
+    // when user clicks next question it will 
+    // add question to questions
     const SaveQuestion = (text, option1, option2, option3) => {
         console.log(text)
         const updateQuestions=[
@@ -33,16 +45,19 @@ const NewQuestionnare = () => {
               { id: 0, text: option1},
               { id: 1, text: option2},
               { id: 2, text: option3}
-            ]
+            ],
+            start: startDate,
+            end: endDate
         }
     ];
     setQuestions(updateQuestions);    
     }
 
     
-
-    const PrintQuestionnare = () => {
-        console.log("new")
+    // when user clicks save and send questionnare
+    // it will send it to server which writes new.json
+    // of that data
+    const SendQuestionnare = () => {
         // first one away wich is empty
         questions.shift()
         console.log(questions)
@@ -53,21 +68,8 @@ const NewQuestionnare = () => {
             },
             body: JSON.stringify(questions)
         });
-        /*for (const i in questions) {
-            // TÄÄ ON VIELÄ super keskeennndjs 
-            /*fs.writeFile('./myFile.json', JSON.stringify(updatedJSON), (err) => {
-                if (err) console.log('Error writing file:', err);
-            })*/
-            // browserify-fs could be solution
-            
-            /*console.log(i + "__:__"+questions[i].text + "_______" + questions[i].options[0].text + " tai " + questions[i].options[1].text + " tai " + questions[i].options[2].text)
-            for (const x in questions[i]) {
-                //console.log(x + "__" + questions[i][x])
-                for (const y in questions[i][x]) {
-                    //console.log(y  +"...." + questions[i][x][y])
-                }
-            }
-        }*/
+        
+        // after that it sets everything to default/null
         setQuestions([
             {
                 text: "",
@@ -75,7 +77,9 @@ const NewQuestionnare = () => {
                   { id: 0, text: ""},
                   { id: 1, text: ""},
                   { id: 2, text: ""}
-                ]
+                ],
+                start: startDate,
+                end: endDate
             }
         ])
     }
@@ -87,9 +91,31 @@ const NewQuestionnare = () => {
         <div className='question-card'>
             <form onSubmit={event => {
                 event.preventDefault();
-                SaveQuestion(text, option1, option2, option3)
+                SaveQuestion(text, option1, option2, option3,startDate,endDate)
             }}>
-                <label>
+            <div className="dates">
+                <label> Start date:
+                <DatePicker
+                    selected={startDate}
+                    selectsStart
+            s       tartDate={startDate}
+                    endDate={endDate}
+                    onChange={date => setStartDate(date)}
+                /></label>
+                <label> End date:
+                <DatePicker
+                    selected={endDate}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    onChange={date => setEndDate(date)}
+                />
+                </label>
+            </div>
+
+           
+                <label className='text'>
                     Question text:
                     <input 
                     type="text" 
@@ -98,7 +124,7 @@ const NewQuestionnare = () => {
                     value={text} 
                      />
                 </label>
-                <label>
+                <label className='options'>
                     Options:
                     <input 
                     type="text" 
@@ -119,9 +145,10 @@ const NewQuestionnare = () => {
                     value={option3} 
                     />
                 </label>
+            
                 <button type='submit'>Next question</button>
             </form>
-            <button onClick={PrintQuestionnare}>Save and send questionnare</button>
+            <button onClick={SendQuestionnare}>Save and send questionnare</button>
         </div>
     </div>
   );
