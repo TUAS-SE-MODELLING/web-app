@@ -32,11 +32,11 @@ const ModeratorPage = () => {
             <div className='question-card'>
                 
                 <h2>Welcome</h2>
-                <h1>What you wan't to do?</h1>
+                <h1>What you want to do?</h1>
                 <FlexDiv>
                     <StyledLink to='/resultPage'>View the<br></br>results</StyledLink>
                     <StyledLink to='/newQuestionnare'>Add a new <br></br>questionnare</StyledLink>
-                    <StyledLink>Edit the current <br></br>questionnare</StyledLink>
+                    <StyledLink to='/editQuiz'>Edit the current <br></br>questionnare</StyledLink>
                 </FlexDiv>
 
             </div>

@@ -6,8 +6,9 @@ import Layout from '../components/Layout';
 import ResultPage from './resultPage';
 import NewQuestionnare from './newQuestionnare';
 import ReadyQuizPage from './readyQuiz';
+import EditQuizPage from "./editQuiz";
 
-
+ 
 const Pages = () => {
     return (
         <BrowserRouter>
@@ -18,6 +19,7 @@ const Pages = () => {
                     <Route path="resultPage" element={<ResultPage />} />
                     <Route path="newQuestionnare" element={<NewQuestionnare />} />
                     <Route path="readyQuiz" element={<ReadyQuizPage />} />
+                    <Route path="editQuiz" element={<EditQuizPage />} />
                 </Routes>
             </Layout>
         </BrowserRouter>

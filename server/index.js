@@ -8,6 +8,7 @@ app.use(cors());
 
 const questionnareData = require('./json/currentQuestionnare.json')
 const newQuiz = require('./json/new.json')
+const answer = require('./json/answer.json')
 
 var jsonParser = bodyParser.json()
 
@@ -16,6 +17,19 @@ app.get("/currentQuiz", (req, res) => {
     res.send(JSON.stringify(questionnareData));
 });
 
+app.get("/answer", (req, res) => {
+    res.header("Contetnt-Type");
+    res.send(JSON.stringify(answer));
+});
+
+
+app.post("/answer", jsonParser,(req, res) =>{
+    fs.writeFile('./json/answer.json', JSON.stringify(req.body), 'utf-8', function(err){
+        if(err)
+            return next(err);
+        res.end();
+    })
+})
 
 app.post("/new", jsonParser,(req, res) => {
    // gets users input and writes it to the new.json

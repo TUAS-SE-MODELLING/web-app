@@ -18,10 +18,10 @@ const ReadyQuizPage = () => {
         //console.log(data.questions[1].options[0].text)
         
     });
-
+ 
     return(
         <div className = "App">
-            <Info text= "This is the result page. Decide the time which results you wan't to search"/>
+            <Info text= "This is the result page. Decide the time which results you want to search"/>
             <div className='question-card'>
                 
                  <Link to="/moderatorPage"> Back</Link>

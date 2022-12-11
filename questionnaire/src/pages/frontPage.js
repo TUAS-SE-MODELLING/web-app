@@ -6,7 +6,6 @@ import '../index.css';
 
 
 
-
 const FrontPage = () => {
 
     // this is for how long quiz will run
@@ -39,28 +38,61 @@ const FrontPage = () => {
 
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
+  
+  
+  const [answers, setAnswers] = useState([]);
 
   //Helper functions
 
+    const sendResults = () => {
+        
+        
+        console.log(answers)
+        fetch('http://localhost:3001/answer', {
+            method: "POST",
+            headers: {
+                'Content-type': "application/json"
+            },
+            body: JSON.stringify({
+                answers})
+        });
+        
+    }
   //possible answer was clicked
 
-  const optionClicked = () => {
+  const optionClicked = (data) => {
     setNum(num + 1)
+    setAnswers([
+        ...answers,
+        {id:currentQuestion, value: data}
+    ]);
+   
     if (currentQuestion + 1 < length) {
       setCurrentQuestion(currentQuestion + 1);
+
     } 
     else {
-      setShowThankYouMessage(true);
+        
+        setShowThankYouMessage(true);
+        
     }
+    
   };
-
+  
+  
   //Go back to start
   const restart = () => {
+    
     setCurrentQuestion(0);
     setShowThankYouMessage(false);
     setNum(1)
+    setAnswers([])
   };
+
+// if survey is finished, results are send server
+if (showThankYouMessage){
+    sendResults()
+}
 
 
 //Show next question & options when button is clicked
@@ -77,7 +109,8 @@ const FrontPage = () => {
         
       <div>
       {/*checks if quiz has completed*/}
-      { showThankYouMessage ? ( 
+      { showThankYouMessage ? (
+         
         /* Thank you at the end */
         <div className='question-card'>
             <h1>Thank you!</h1>
@@ -91,12 +124,12 @@ const FrontPage = () => {
         <h2>Question: {num} </h2>
         <h1 className='question-text'>{quizdata[currentQuestion].text}</h1>
 
-        <ul>
+        <ul>  
          {quizdata[currentQuestion].options.map((option) => {
           return (
             <li 
             key={option.id}
-            onClick={() => optionClicked()}>
+            onClick={() => optionClicked(option.text)}>
               {option.text}
             </li>
           );
