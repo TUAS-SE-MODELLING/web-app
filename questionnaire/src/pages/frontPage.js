@@ -26,7 +26,9 @@ const FrontPage = () => {
         .then((response) => response.json())
         .then((json) => {
             setQuizdata(json)
-            setLength(Object.keys(quizdata).length)
+            console.log(quizdata)
+            console.log(quizdata.length)
+            setLength(quizdata.length)
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
@@ -66,7 +68,9 @@ const FrontPage = () => {
         ...answers,
         {id:currentQuestion, value: data}
     ]);
-   
+    
+    console.log(currentQuestion)
+    console.log(length)
     if (currentQuestion + 1 < length) {
       setCurrentQuestion(currentQuestion + 1);
 
