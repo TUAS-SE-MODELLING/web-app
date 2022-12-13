@@ -31,6 +31,7 @@ const FrontPage = () => {
         setQuizdata(json)
         console.log(json)
         console.log(quizdata)
+        
         console.log(quizdata.length)
         setLength(quizdata.length)
     
