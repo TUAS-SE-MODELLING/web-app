@@ -13,7 +13,9 @@ const ReadyQuizPage = () => {
     .then((response) => response.json())
     .then(data => {
         //console.log(data.start)
+        console.log(JSON.stringify(data))
         setQuizData(JSON.stringify(data))
+        console.log(quizData.answers[0])
         //console.log(data.questions[0].text)
         //console.log(data.questions[1].options[0].text)
         

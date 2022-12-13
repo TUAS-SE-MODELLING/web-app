@@ -11,7 +11,7 @@ const FrontPage = () => {
     // this is for how long quiz will run
     const [length, setLength] = useState(0)
 
-    const [quizdata , setQuizdata] =useState([])
+    const [quizdata, setQuizdata] =useState([])
     const [isLoading, setLoading] = useState(true);
 
     // this is only to change questions number
@@ -22,16 +22,23 @@ const FrontPage = () => {
     // then when everything has completed we will set
     // loading to false which will allow us to see quiz
     useEffect(() => {
-        fetch('http://localhost:3001/currentQuiz')
-        .then((response) => response.json())
-        .then((json) => {
-            setQuizdata(json)
-            console.log(quizdata)
-            console.log(quizdata.length)
-            setLength(quizdata.length)
-        })
+      const fetchData = async () => {
+        const data = await fetch('http://localhost:3001/currentQuiz')
+
+        const json = await data.json();
+        //console.log(json)
+
+        setQuizdata(json)
+        console.log(json)
+        console.log(quizdata)
+        console.log(quizdata.length)
+        setLength(quizdata.length)
+    
+      }
+        fetchData()
         .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
+        .finally(() => 
+          setLoading(false));
 
     }, []);
 
@@ -41,36 +48,24 @@ const FrontPage = () => {
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   
-  
-  const [answers, setAnswers] = useState([]);
+
+  const [answer, setAnswer] = useState([]);
 
   //Helper functions
 
-    const sendResults = () => {
-        
-        
-        console.log(answers)
-        fetch('http://localhost:3001/answer', {
-            method: "POST",
-            headers: {
-                'Content-type': "application/json"
-            },
-            body: JSON.stringify({
-                answers})
-        });
-        
-    }
   //possible answer was clicked
 
   const optionClicked = (data) => {
+
     setNum(num + 1)
-    setAnswers([
-        ...answers,
-        {id:currentQuestion, value: data}
+   
+    setAnswer([
+        ...answer,
+        {question: quizdata[currentQuestion].text, value: data}
     ]);
     
-    console.log(currentQuestion)
-    console.log(length)
+    //console.log(currentQuestion)
+    //console.log(length)
     if (currentQuestion + 1 < length) {
       setCurrentQuestion(currentQuestion + 1);
 
@@ -78,6 +73,14 @@ const FrontPage = () => {
     else {
         
         setShowThankYouMessage(true);
+        fetch('http://localhost:3001/answer', {
+            method: "POST",
+            headers: {
+                'Content-type': "application/json"
+            },
+            body: JSON.stringify({
+                answer})
+        });
         
     }
     
@@ -90,13 +93,13 @@ const FrontPage = () => {
     setCurrentQuestion(0);
     setShowThankYouMessage(false);
     setNum(1)
-    setAnswers([])
+    setAnswer([])
   };
 
 // if survey is finished, results are send server
-if (showThankYouMessage){
+/*if (showThankYouMessage){
     sendResults()
-}
+}*/
 
 
 //Show next question & options when button is clicked
@@ -114,7 +117,6 @@ if (showThankYouMessage){
       <div>
       {/*checks if quiz has completed*/}
       { showThankYouMessage ? (
-         
         /* Thank you at the end */
         <div className='question-card'>
             <h1>Thank you!</h1>

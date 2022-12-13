@@ -18,13 +18,18 @@ app.get("/currentQuiz", (req, res) => {
 });
 
 app.get("/answer", (req, res) => {
-    res.header("Contetnt-Type");
+    res.header("Content-Type");
     res.send(JSON.stringify(answer));
 });
 
 
 app.post("/answer", jsonParser,(req, res) =>{
-    fs.writeFile('./json/answer.json', JSON.stringify(req.body), 'utf-8', function(err){
+
+    var obj = require('./json/answer.json');
+
+    obj.answers.push(req.body);
+
+    fs.writeFile('./json/answer.json', JSON.stringify(obj), 'utf-8', function(err){
         if(err)
             return next(err);
         res.end();

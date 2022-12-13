@@ -49,7 +49,7 @@ const EditQuizPage = () => {
     }, []);
         
          //const [question1, setQuestion1] = useState({ question : quizdata[0].text}, {
-            options: quizdata[0].options.map(option)
+            //options: quizdata[0].options.map(option)
        // })
        // console.log(question1)
           return (
