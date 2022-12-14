@@ -37,8 +37,13 @@ app.post("/answer", jsonParser,(req, res) =>{
 })
 
 app.post("/new", jsonParser,(req, res) => {
+
+    var objForNew = require('./json/new.json');
+
+    objForNew.newSurveys.push(req.body);
+
    // gets users input and writes it to the new.json
-    fs.writeFile("json/new.json", JSON.stringify(req.body), 'utf8', function (err) {
+    fs.writeFile("json/new.json", JSON.stringify(objForNew), 'utf8', function (err) {
         if (err)
             return next(err);
         res.end(); 

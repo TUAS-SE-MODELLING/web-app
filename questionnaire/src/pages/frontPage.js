@@ -27,7 +27,7 @@ const FrontPage = () => {
 
         const json = await data.json();
         //console.log(json)
-
+ 
         setQuizdata(json)
         console.log(json)
         console.log(quizdata)

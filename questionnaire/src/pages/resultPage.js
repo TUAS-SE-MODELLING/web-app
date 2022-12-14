@@ -93,16 +93,24 @@ const ResultPage = () => {
             let zeroo = []
             let twoo = []
             let questions = []
+
+          console.log(answerdata.length)
+
+          questions.push(answerdata[1].answer[0].question)
+          questions.push(answerdata[1].answer[1].question)
+          questions.push(answerdata[1].answer[2].question)
+
+
             
             for (var i=0; i < answerdata.length; i++) {
-                //console.log(answerdata[i].answer.length)
-                if (answerdata[i].answer.length>0){
-                  
+                console.log(answerdata[i].answer.length)
                 
-                        questions.push(answerdata[i].answer[i-1].question)
-                  
+                if (answerdata[i].answer.length>0){
+                    
+                 
+
                     for (const x in answerdata[i].answer){ 
-                      
+                       
                         console.log( x + "......." + answerdata[i].answer[x].value )
                         if ( x === '0'){
                             
@@ -119,7 +127,7 @@ const ResultPage = () => {
                     }
                 }
                 
-
+ 
                 const counts0 = {};
                 const counts1 = {};
                 const counts2 = {};
@@ -142,7 +150,7 @@ const ResultPage = () => {
                     console.log(c + counts0[c]) 
                 }
 
-                
+                   
                
                 const PleaseWorkData = [
                   {

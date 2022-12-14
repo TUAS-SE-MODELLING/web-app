@@ -106,7 +106,8 @@ const NewQuestionnare = () => {
       <Info text="Here you can make a new questionnare" />
         <div className='question-card'>
         <Link to="/moderatorPage"> Back</Link>
-                 <h2>Results</h2>
+                 <h2>Add a new questionnaire</h2>
+                 
             <form onSubmit={event => {
                 event.preventDefault();
                 SaveQuestion(text, option1, option2, option3)
